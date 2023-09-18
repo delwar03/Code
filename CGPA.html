@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUST CSE 1/1 CGPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        #error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>CSE 1/1 CGPA Calculator</h2>
+        <!-- <label for="creditHours">Credit Hours:</label>
+        <input type="number" id="creditHours" min="0" step="0.01" required> -->
+
+        <label for="C">Enter your GPA of C (0-4.0):</label>
+        <input type="number" id="C" min="0" max="4" step="0.01" required>
+
+        <label for="C_lab">Enter your GPA of C Lab (0-4.0):</label>
+        <input type="number" id="C_lab" min="0" max="4" step="0.01" required>
+        
+        <label for="DM">Enter your GPA of Discrete Mathematics (0-4.0):</label>
+        <input type="number" id="DM" min="0" max="4" step="0.01" required>
+
+        <label for="EEE">Enter your GPA of EEE (0-4.0):</label>
+        <input type="number" id="EEE" min="0" max="4" step="0.01" required>
+
+        <label for="EEE_lab">Enter your GPA of EEE Lab (0-4.0):</label>
+        <input type="number" id="EEE_lab" min="0" max="4" step="0.01" required>
+
+        <label for="ENG">Enter your GPA of English (0-4.0):</label>
+        <input type="number" id="ENG" min="0" max="4" step="0.01" required>
+
+        <label for="ENG_lab">Enter your GPA of English Lab (0-4.0):</label>
+        <input type="number" id="ENG_lab" min="0" max="4" step="0.01" required>
+        
+        <label for="LA">Enter your GPA of Linear Algebra (0-4.0):</label>
+        <input type="number" id="LA" min="0" max="4" step="0.01" required>
+
+        <label for="SSS">Enter your GPA of SSS (0-4.0):</label>
+        <input type="number" id="SSS" min="0" max="4" step="0.01" required>
+
+        <button onclick="calculateCGPA()">Calculate CGPA</button>
+        <div id="result"></div>
+        <div id="error"></div>
+    </div>
+
+    <script>
+        function calculateCGPA() {
+            const C = parseFloat(document.getElementById("C").value);
+            const C_lab = parseFloat(document.getElementById("C_lab").value);
+            const DM = parseFloat(document.getElementById("DM").value);
+            const EEE = parseFloat(document.getElementById("EEE").value);
+            const EEE_lab = parseFloat(document.getElementById("EEE_lab").value);
+            const ENG = parseFloat(document.getElementById("ENG").value);
+            const ENG_lab = parseFloat(document.getElementById("ENG_lab").value);
+            const LA = parseFloat(document.getElementById("LA").value);
+            const SSS = parseFloat(document.getElementById("SSS").value);
+
+            const resultElement = document.getElementById("result");
+            const errorElement = document.getElementById("error");
+
+            // Check if inputs are valid
+            if (isNaN(C) || isNaN(C_lab) || isNaN(DM) || isNaN(EEE) ||
+                isNaN(EEE_lab) || isNaN(ENG) || isNaN(ENG_lab) || isNaN(LA) || isNaN(SSS)
+                || C < 0 || C > 4
+                || C_lab < 0 || C_lab > 4
+                || DM < 0 || DM > 4
+                || EEE < 0 || EEE > 4
+                || EEE_lab < 0 || EEE_lab > 4
+                || ENG < 0 || ENG > 4
+                || ENG_lab < 0 || ENG_lab > 4
+                || LA < 0 || LA > 4
+                || SSS < 0 || SSS > 4) {
+                errorElement.innerHTML = "Please enter valid values.";
+                resultElement.innerHTML = "";
+            } else {
+                errorElement.innerHTML = "";
+                const result = (((C * 3.0) + (C_lab * 3.0) + (DM * 3.0) + (EEE * 3.0) + (EEE_lab * 1.5)
+                                 +  (ENG * 2.0) + (ENG_lab * 1.0) + (LA * 3.0) + (SSS * 3.0)) / 22.5 ).toFixed(2);
+                resultElement.innerHTML = `Yooo!🔥 Your CGPA is: ${result}`;
+            }
+        }
+    </script>
+</body>
+</html>
